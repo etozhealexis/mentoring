@@ -31,30 +31,29 @@ public class Client {
 
     public float findAns() throws Exception{
         float ans = 0;
-        float s = getSum();
-        float m = getMonth();
-        float p = getPercent();
         if (this.checkType() == 3 || this.checkConditions() == 3){
             throw new Exception("throws Exception");
         }
         if (this.checkType() == 1){
-            s -= m*12;
-            float s1 = s;
-            while (s > 0){
-                s *= 1.1;
-                ans += s - s1;
-                s -= m * 12;
-                s1 = s;
+            sum -= month * 12;
+            float s1 = sum;
+
+            while (sum > 0){
+                sum *= 1.1;
+                ans += sum - s1;
+                sum -= month * 12;
+                s1 = sum;
             }
             return ans;
         }
         if (this.checkType() == 2){
             float s1 = getSum();
-            while (s > 0){
-                s *= 1.1;
-                ans += s - s1;
-                s -= m * 12;
-                s1 = s;
+
+            while (sum > 0){
+                sum *= 1.1;
+                ans += sum - s1;
+                sum -= month * 12;
+                s1 = sum;
             }
             return ans;
         }
