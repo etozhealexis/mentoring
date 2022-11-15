@@ -22,8 +22,10 @@ public class Client {
     }
 
     public int checkConditions(){
-        if (getSum() <= 0 || (getSum() * getPercent() / 100 > getMonth() * 12 && checkType() == 2)
-                || ((getSum() - getMonth() * 12) * getPercent() / 100 > getMonth() * 12 && checkType() == 1) || getPercent() <= 0){
+        if (getSum() <= 0
+                || (getSum() * getPercent() / 100 > getMonth() * 12 && checkType() == 2)
+                || ((getSum() - getMonth() * 12) * getPercent() / 100 > getMonth() * 12 && checkType() == 1)
+                || getPercent() <= 0){
             return 3;
         }
         return 0;
@@ -31,11 +33,15 @@ public class Client {
 
     public float findAns() throws Exception{
         float ans = 0;
+
         if (this.checkType() == 3 || this.checkConditions() == 3){
             throw new Exception("throws Exception");
         }
+
         if (this.checkType() == 1){
+
             sum -= month * 12;
+
             float s1 = sum;
 
             while (sum > 0){
@@ -46,6 +52,7 @@ public class Client {
             }
             return ans;
         }
+
         if (this.checkType() == 2){
             float s1 = getSum();
 
