@@ -5,22 +5,47 @@ public class Client {
     private static String type;
 
     public Client(float sum, float month, float percent, String type){
-        this.sum = sum;
-        this.month = month;
-        this.percent = percent;
-        this.type = type;
+        Client.sum = sum;
+        Client.month = month;
+        Client.percent = percent;
+        Client.type = type;
     }
 
     public int checkType(){
-        if (type.equals(" business")){
+        if (getType().equals(" business")){
             return 1;
         }
-        if (type.equals(" human")){
+        if (getType().equals(" human")){
             return 2;
         }
-        else{
+        return 3;
+    }
+
+    public int checkConditions(){
+        if (getSum() <= 0 || (getSum() * getPercent() / 100 > getMonth() * 12 && checkType() == 2)
+                || (getSum() * getPercent() / 100 > getMonth() * 12 * 2 && checkType() == 1) || getPercent() <= 0){
             return 3;
         }
+        return 0;
+    }
+
+    public float findAns() throws Exception{
+        int ans = 0;
+        if (this.checkType() == 3 || this.checkConditions() == 3){
+            throw new Exception("throws Exception");
+        }
+        if (this.checkType() == 1){
+            return 1;
+        }
+        if (this.checkType() == 2){
+            while (sum > 0){ // !!!!!
+                sum *= 1.1;
+                sum -= month;
+
+            }
+            return 2;
+        }
+        return 0;
     }
 
     public float getSum() {
@@ -38,4 +63,6 @@ public class Client {
     public String getType(){
         return Client.type;
     }
+
+
 }
