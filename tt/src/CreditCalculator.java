@@ -8,7 +8,8 @@ public class CreditCalculator extends CreditData{
         final String business = "business";
         final String human = "human";
 
-        if (!getType().equals(business) || !getType().equals(human)) {
+        if (!getType().equals(business) && !getType().equals(human)) {
+            System.out.println(getType());
             throw new Exception("Invalid type");
         }
     }
