@@ -6,7 +6,7 @@ public class Main {
         Scanner in = new Scanner(System.in);
         in.useLocale(Locale.ENGLISH);
 
-        Client c = new Client(in.nextFloat(), in.nextFloat(), in.nextFloat(), in.nextLine().trim());
+        CreditCalculator c = new CreditCalculator(in.nextFloat(), in.nextFloat(), in.nextFloat(), in.nextLine().trim());
 
         System.out.println(c.findAns());
     }

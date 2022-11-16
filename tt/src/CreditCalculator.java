@@ -1,21 +1,17 @@
-public class Client {
-    private static float sum;
-    private static float month;
-    private static float percent;
-    private static String type;
+public class CreditCalculator extends CreditData{
 
-    public Client(float sum, float month, float percent, String type) {
-        Client.sum = sum;
-        Client.month = month;
-        Client.percent = percent;
-        Client.type = type;
+    public CreditCalculator(float sum, float month, float percent, String type) {
+        super(sum, month, percent, type);
     }
 
     public int checkType() throws Exception {
-        if (getType().equals("business")) {
+        final String business = "business";
+        final String human = "human";
+
+        if (getType().equals(business)) {
             return 1;
         }
-        if (getType().equals("human")) {
+        if (getType().equals(human)) {
             return 2;
         }
         throw new Exception("Invalid type");
@@ -63,22 +59,4 @@ public class Client {
         }
         return 0;
     }
-
-    public float getSum() {
-        return Client.sum;
-    }
-
-    public float getMonth() {
-        return Client.month;
-    }
-
-    public float getPercent() {
-        return Client.percent;
-    }
-
-    public String getType() {
-        return Client.type;
-    }
-
-
 }
