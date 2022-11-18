@@ -1,7 +1,7 @@
 public class CreditData {
     static float sum;
     static float month;
-    private static float percent;
+    static float percent;
     private static String type;
 
     public CreditData(float sum, float month, float percent, String type) {

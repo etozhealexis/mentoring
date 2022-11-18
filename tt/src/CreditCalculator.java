@@ -30,31 +30,18 @@ public class CreditCalculator extends CreditData {
         checkType();
 
         if (getType().equals(business)) {
-
             sum -= month * 12;
-
-            float s1 = sum;
-
-            while (sum > 0) {
-                sum *= 1.1;
-                ans += sum - s1;
-                sum -= month * 12;
-                s1 = sum;
-            }
-            return ans;
         }
 
-        if (getType().equals(human)) {
-            float s1 = getSum();
+        float s1 = sum;
 
-            while (sum > 0) {
-                sum *= 1.1;
-                ans += sum - s1;
-                sum -= month * 12;
-                s1 = sum;
-            }
-            return ans;
+        while (sum > 0) {
+            sum *= 1 + percent / 100;
+            ans += sum - s1;
+            sum -= month * 12;
+            s1 = sum;
         }
-        return 0;
+
+        return ans;
     }
 }
