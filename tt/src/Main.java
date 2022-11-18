@@ -1,16 +1,21 @@
-import java.util.Locale;
-import java.util.Scanner;
+import java.io.Console;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        Scanner in = new Scanner(System.in);
-        in.useLocale(Locale.ENGLISH);
+        Console console = System.console();
 
-        CreditData creditData = new CreditData(in.nextFloat(), in.nextFloat(), in.nextFloat(), in.nextLine().trim());
-        CreditCalculator calc = new CreditCalculator();
+        if (console != null) {
+            String data = console.readLine();
+            String[] dataSplit = data.split(" ");
 
-        double result = calc.calculateOverpayment(creditData);
+            CreditData creditData = new CreditData(Float.parseFloat(dataSplit[0]), Float.parseFloat(dataSplit[1]),
+                    Float.parseFloat(dataSplit[2]), dataSplit[3]);
+            CreditCalculator calc = new CreditCalculator();
 
-        System.out.println(result);
+            double result = calc.calculateOverpayment(creditData);
+
+            console.printf(String.valueOf(result));
+        }
+
     }
 }

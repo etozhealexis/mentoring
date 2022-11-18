@@ -30,7 +30,7 @@ public class CreditCalculator {
         if (creditData.getType().equals(business)) {
             sum -= creditData.getPercent() * 12;
         }
-        
+
 
         while (sum > 0) {
             sum *= 1 + creditData.getPercent() / 100;
