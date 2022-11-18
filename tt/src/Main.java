@@ -6,8 +6,11 @@ public class Main {
         Scanner in = new Scanner(System.in);
         in.useLocale(Locale.ENGLISH);
 
-        CreditData c = new CreditData(in.nextFloat(), in.nextFloat(), in.nextFloat(), in.nextLine().trim());
+        CreditData creditData = new CreditData(in.nextFloat(), in.nextFloat(), in.nextFloat(), in.nextLine().trim());
+        CreditCalculator calc = new CreditCalculator();
 
-        System.out.println(c.calculateAns());
+        double result = calc.calculateOverpayment(creditData);
+
+        System.out.println(result);
     }
 }

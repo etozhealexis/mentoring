@@ -1,47 +1,45 @@
-public class CreditCalculator extends CreditData {
+public class CreditCalculator {
     static final String business = "business";
     static final String human = "human";
 
-    public CreditCalculator(float sum, float month, float percent, String type) {
-        super(sum, month, percent, type);
-    }
+    public static void checkType(String type) throws Exception {
 
-    public static void checkType() throws Exception {
-
-        if (!getType().equals(business) && !getType().equals(human)) {
+        if (!type.equals(business) && !type.equals(human)) {
             throw new Exception("Invalid type");
         }
     }
 
-    public static void checkValues() throws Exception {
+    public static void checkValues(CreditData creditData) throws Exception {
 
-        if (getSum() <= 0
-                || (getSum() * getPercent() / 100 > getMonth() * 12 && getType().equals(human))
-                || ((getSum() - getMonth() * 12) * getPercent() / 100 > getMonth() * 12 && getType().equals(business))
-                || getPercent() <= 0) {
+        if (CreditData.getSum() <= 0
+                || (creditData.getSum() * creditData.getPercent() / 100 > creditData.getMonth() * 12 && creditData.getType().equals(human))
+                || ((creditData.getSum() - creditData.getPercent() * 12) * creditData.getPercent() / 100 > creditData.getMonth() * 12 && creditData.getType().equals(business))
+                || creditData.getPercent() <= 0) {
             throw new Exception("Invalid values");
         }
     }
 
-    public static float findAns() throws Exception {
+    public double calculateOverpayment(CreditData creditData) throws Exception {
         float ans = 0;
+        float sum = creditData.getSum();
+        float sum1 = sum;
 
-        checkValues();
-        checkType();
+        checkValues(creditData);
+        checkType(creditData.getType());
 
-        if (getType().equals(business)) {
-            sum -= month * 12;
+        if (creditData.getType().equals(business)) {
+            sum -= creditData.getPercent() * 12;
         }
-
-        float s1 = sum;
+        
 
         while (sum > 0) {
-            sum *= 1 + percent / 100;
-            ans += sum - s1;
-            sum -= month * 12;
-            s1 = sum;
+            sum *= 1 + creditData.getPercent() / 100;
+            ans += sum - sum1;
+            sum -= creditData.getMonth() * 12;
+            sum1 = sum;
         }
 
         return ans;
     }
+
 }

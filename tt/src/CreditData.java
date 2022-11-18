@@ -11,10 +11,6 @@ public class CreditData {
         CreditData.type = type;
     }
 
-    public float calculateAns() throws Exception {
-        return CreditCalculator.findAns();
-    }
-
     public static float getSum() {
         return CreditData.sum;
     }
