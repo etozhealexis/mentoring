@@ -1,19 +1,19 @@
 public class CreditCalculator extends CreditData {
-    final String business = "business";
-    final String human = "human";
+    static final String business = "business";
+    static final String human = "human";
 
     public CreditCalculator(float sum, float month, float percent, String type) {
         super(sum, month, percent, type);
     }
 
-    public void checkType() throws Exception {
+    public static void checkType() throws Exception {
 
         if (!getType().equals(business) && !getType().equals(human)) {
             throw new Exception("Invalid type");
         }
     }
 
-    public void checkConditions() throws Exception {
+    public static void checkValues() throws Exception {
 
         if (getSum() <= 0
                 || (getSum() * getPercent() / 100 > getMonth() * 12 && getType().equals(human))
@@ -23,10 +23,10 @@ public class CreditCalculator extends CreditData {
         }
     }
 
-    public float findAns() throws Exception {
+    public static float findAns() throws Exception {
         float ans = 0;
 
-        checkConditions();
+        checkValues();
         checkType();
 
         if (getType().equals(business)) {

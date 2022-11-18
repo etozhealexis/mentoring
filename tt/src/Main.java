@@ -6,8 +6,8 @@ public class Main {
         Scanner in = new Scanner(System.in);
         in.useLocale(Locale.ENGLISH);
 
-        CreditCalculator c = new CreditCalculator(in.nextFloat(), in.nextFloat(), in.nextFloat(), in.nextLine().trim());
+        CreditData c = new CreditData(in.nextFloat(), in.nextFloat(), in.nextFloat(), in.nextLine().trim());
 
-        System.out.println(c.findAns());
+        System.out.println(c.calculateAns());
     }
 }

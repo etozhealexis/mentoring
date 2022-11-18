@@ -1,8 +1,8 @@
 public class CreditData {
-    public static float sum;
-    public static float month;
-    public static float percent;
-    public static String type;
+    static float sum;
+    static float month;
+    private static float percent;
+    private static String type;
 
     public CreditData(float sum, float month, float percent, String type) {
         CreditData.sum = sum;
@@ -11,19 +11,23 @@ public class CreditData {
         CreditData.type = type;
     }
 
-    public float getSum() {
+    public float calculateAns() throws Exception {
+        return CreditCalculator.findAns();
+    }
+
+    public static float getSum() {
         return CreditData.sum;
     }
 
-    public float getMonth() {
+    public static float getMonth() {
         return CreditData.month;
     }
 
-    public float getPercent() {
+    public static float getPercent() {
         return CreditData.percent;
     }
 
-    public String getType() {
+    public static String getType() {
         return CreditData.type;
     }
 
