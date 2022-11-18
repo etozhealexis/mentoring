@@ -34,13 +34,13 @@ public class CreditCalculator {
         float sum1 = sum;
 
         while (sum > 0) {
-            System.out.println(ans);
+
             sum *= 1 + creditData.getPercent() / 100;
-            System.out.println(sum);
+
             ans += Math.abs(sum - sum1);
-            System.out.println(ans);
+
             sum -= creditData.getMonth() * 12;
-            System.out.println(sum);
+
             sum1 = sum;
         }
 
