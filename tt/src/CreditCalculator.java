@@ -22,20 +22,25 @@ public class CreditCalculator {
     public double calculateOverpayment(CreditData creditData) throws Exception {
         float ans = 0;
         float sum = creditData.getSum();
-        float sum1 = sum;
 
         checkValues(creditData);
         checkType(creditData.getType());
 
         if (creditData.getType().equals(business)) {
-            sum -= creditData.getPercent() * 12;
+            sum -= creditData.getMonth() * 12;
+
         }
 
+        float sum1 = sum;
 
         while (sum > 0) {
+            System.out.println(ans);
             sum *= 1 + creditData.getPercent() / 100;
-            ans += sum - sum1;
+            System.out.println(sum);
+            ans += Math.abs(sum - sum1);
+            System.out.println(ans);
             sum -= creditData.getMonth() * 12;
+            System.out.println(sum);
             sum1 = sum;
         }
 
